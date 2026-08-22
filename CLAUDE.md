@@ -1,3 +1,50 @@
+# Haiky
+
+An Electron app: a small creature that lives on a transparent, click-through
+overlay over the Windows taskbar and reacts to what Claude Code is doing.
+
+## Where things are
+
+| | |
+|---|---|
+| `src/main/` | The Electron main process. `main.js` orchestrates; `overlay.js` owns the window and the 30Hz hit test; `sessions.js` watches `~/.claude/sessions/`; `bridge.js` is the loopback HTTP server the hooks post to; `hooks.js` merges a block into `~/.claude/settings.json`; `mascot.js` is the voice; `intents.js` is the free regex router; `store.js` is persistence; `geometry.js` computes the taskbar rectangle. |
+| `src/renderer/` | The creature itself — pose sampling, physics, drawing. Never `require`s anything. |
+| `src/main/preload.js` | The only boundary. Eleven named channels, documented in `IPC.md`. |
+| `vendor/removed-snapshot/` | **Read-only.** A verbatim copy of the app Haiky's creature came from. Nothing loads it. Do not fix its bugs, reformat it, or "clean it up" — the point is that it is unchanged. Its `.js` files under `host/` are prose with code excerpts, not runnable JavaScript; their parse errors are expected. |
+| `build/make-icon.js` | Draws the tray icons from the same superellipse the creature uses. `npm run icon`. |
+
+## Rules that are not obvious from the code
+
+- **Read `IPC.md` before touching anything that crosses the preload.** Import
+  graphs cannot see channel names, so the wire between `main.js`, `overlay.js`
+  and `renderer/mascot.js` is invisible to every static tool including this
+  project's own knowledge graph. `IPC.md` is what makes it visible; a new
+  channel that is not added there is a channel nothing can find later.
+- **Facts go up, conclusions come down** (`src/main/overlay.js:169`). The
+  renderer publishes what it knows; main decides what follows. Do not move a
+  decision into the page to save a round trip.
+- **Never bump a `version` in `store.js` `DOCS` casually.** `load()` falls back
+  to defaults on a version mismatch, so a bump discards that document — for
+  `usage`, that is the user's whole spend history.
+- **The creature never speaks unprompted**, and that is not a setting. No path
+  in `renderer/mascot.js` opens the bubble without somebody having asked.
+- **`ACT` in `main.js` is the whole permission surface.** Acts are a closed
+  enum, not tools with arguments. A name not on the list does nothing.
+- **`haiky:talk` sends the mood, the run state, the open folders and where it
+  is standing — and nothing else.** No path, no transcript, no code. The
+  promise in `MASCOT.md` is kept by not sending them.
+- **Comments here explain why, not what**, and they are load-bearing
+  documentation. Match that register; do not strip them.
+
+## Commands
+
+```
+npm start        # electron .
+npm run icon     # regenerate tray icons
+npm run pack     # unpacked win build
+npm run dist     # win installer
+```
+
 ## graphify
 
 This project has a knowledge graph at graphify-out/ with god nodes, community structure, and cross-file relationships.
@@ -6,4 +53,9 @@ Rules:
 - For codebase questions, first run `graphify query "<question>"` when graphify-out/graph.json exists. Use `graphify path "<A>" "<B>"` for relationships and `graphify explain "<concept>"` for focused concepts. These return a scoped subgraph, usually much smaller than GRAPH_REPORT.md or raw grep output.
 - If graphify-out/wiki/index.md exists, use it for broad navigation instead of raw source browsing.
 - Read graphify-out/GRAPH_REPORT.md only for broad architecture review or when query/path/explain do not surface enough context.
-- After modifying code, run `graphify update .` to keep the graph current (AST-only, no API cost).
+- After modifying code, run `graphify update .` to keep the graph current (AST-only, no API cost). `npm run graph` does the same. A `post-commit` hook also rebuilds it, so a normal commit keeps it fresh without being asked.
+- `graphify-out/graph.json`, `GRAPH_REPORT.md`, `wiki/`, `memory/` and `reflections/` are committed. Everything else under `graphify-out/` is regenerable and gitignored — `graphify export html|svg|graphml|obsidian|neo4j|callflow-html` and `graphify tree` rebuild those on demand.
+- `.mcp.json` exposes the same graph over MCP (`query_graph`, `shortest_path`, `god_nodes`, …) to any agent that reads it.
+- Two known gaps in the graph, so you do not trust it further than it goes:
+  - `build/make-icon.js` is not scanned — graphify skips `build/` by convention. Its nodes are in the graph because they were extracted explicitly; if that file changes, re-extract it by hand.
+  - `.css` is not a supported type, so `src/renderer/mascot.css` is invisible. The CSS custom properties the creature needs are listed in `vendor/removed-snapshot/README.md`.

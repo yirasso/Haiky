@@ -2,3 +2,18 @@ node_modules/
 dist/
 build/icon.png
 src/assets/tray-*.png
+
+# graphify — track the graph and the prose, not the regenerable viewers.
+# graph.json is tracked on purpose: `graphify hook install` registered a union
+# merge driver for it in .gitattributes, so two branches can both rebuild it.
+graphify-out/.graphify_python
+graphify-out/.graphify_root
+graphify-out/.vocab.txt
+graphify-out/cache/
+graphify-out/obsidian/
+graphify-out/graph.html
+graphify-out/graph.svg
+graphify-out/graph.graphml
+graphify-out/GRAPH_TREE.html
+graphify-out/*-callflow.html
+graphify-out/cypher.txt

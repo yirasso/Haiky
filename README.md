@@ -339,3 +339,11 @@ takes an argument from the renderer, the guarantee is gone.
   stands where the bar will be when it slides back up.
 - The primary display only, for now.
 - Where you put it down does not survive a restart.
+- **The weekly ledger never rolls over.** `usage.week` is written on every
+  reply and read by nothing. `mascot.rollWeek()` is the thing that would clear
+  it, and it has no caller — in Origin the host called it with the reset stamp
+  the account reported, and Haiky, which spawns `claude.exe` itself, has no
+  such stamp to read. The lifetime figure in the tray is the honest one; the
+  week beside it in the document is not a week. Left in place rather than
+  removed because clearing it means bumping the document version, and a version
+  bump throws the lifetime total away with it.

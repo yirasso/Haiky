@@ -1,0 +1,15 @@
+# Agent harness config, not project source. Without this, .claude/settings.json
+# is indexed as code and graphify ends up describing its own hook wiring.
+.claude/
+
+# Generated icons and installers are already in .gitignore, listed again here
+# so a run with --no-gitignore still skips them.
+dist/
+build/icon.png
+src/assets/tray-*.png
+
+# Not listed, deliberately:
+#   graphify-out/          already skipped by the scanner, except:
+#   graphify-out/memory/   indexed on purpose — saved answers become graph nodes
+#                          on the next `graphify update .`, which is the feedback
+#                          loop working, not corpus pollution.

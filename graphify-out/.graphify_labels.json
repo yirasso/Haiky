@@ -1,1 +1,21 @@
-{"0": "Creature Identity and Voice", "1": "Haiky Renderer Creature", "2": "Origin Renderer Creature", "3": "Main Process Orchestration", "4": "Reply Protocol and Hook Contract", "5": "Electron Build Config", "6": "Package Manifest and Dependencies", "7": "Overlay Window Geometry", "8": "Haiky Mascot Agent Runtime", "9": "Claude Code Hook Installer", "10": "Origin Mascot Agent Runtime", "11": "Session File Watcher", "12": "Click-Through Overlay Physics", "13": "Loopback Hook Bridge Server", "14": "Preferences Store", "15": "Renderer Glue and Spend Display", "16": "Intent Router", "17": "Eye Clipping and Gaze", "18": "Host Main Glue", "19": "Preload IPC Bridge"}
+{
+  "0": "Channel, Act and Reply Contract",
+  "1": "Click-Through Seam and the Port",
+  "2": "Creature Identity and Voice",
+  "3": "Haiky Renderer Creature",
+  "4": "Haiky Mascot Agent Runtime",
+  "5": "Origin Renderer Creature",
+  "6": "Main Process Orchestration",
+  "7": "Package Manifest and Dependencies",
+  "8": "Electron Build Config",
+  "9": "Overlay Window Geometry",
+  "10": "Claude Code Hook Installer",
+  "11": "Origin Mascot Agent Runtime",
+  "12": "Session File Watcher",
+  "13": "Loopback Hook Bridge Server",
+  "14": "Preferences Store",
+  "15": "Tray Icon Generator",
+  "16": "Renderer Glue and Spend Display",
+  "17": "Intent Router",
+  "18": "Eye Clipping and Gaze"
+}

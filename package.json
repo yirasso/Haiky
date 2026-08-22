@@ -10,7 +10,8 @@
     "start": "electron .",
     "icon": "node build/make-icon.js",
     "pack": "electron-builder --win --dir",
-    "dist": "electron-builder --win"
+    "dist": "electron-builder --win",
+    "graph": "graphify update ."
   },
   "devDependencies": {
     "electron": "^43.4.0",

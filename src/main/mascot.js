@@ -133,7 +133,13 @@ const bill = () => {
 
 /* The plan's own clock, not a calendar of ours: when the reset stamp the
    account reports changes, the window has rolled and the week goes back to
-   nothing. */
+   nothing.
+
+   Nothing calls this yet. Origin's host had a plan document to read the stamp
+   out of; Haiky spawns the binary itself and has no such document, so `week`
+   below accumulates and never rolls. Kept whole rather than deleted because
+   dropping the field means a version bump, and a version bump takes the
+   lifetime total with it. See "Known limits" in README.md. */
 function rollWeek (resets) {
   const key = String(resets || '')
   if (!key) return
@@ -148,6 +154,11 @@ function state () {
   return { name: k.name, memories: k.memory.length, spent: b, week: b.week, ready: ready() }
 }
 
+/* Forgetting from outside the conversation — a tray item, or anything else
+   that wants to clear the person without asking the creature to. The live path
+   is not this one: `drop: "all"` in a reply is handled inline in talk(), where
+   the numbered single drop is handled too, so that both readings of "forget"
+   are decided in one place against one list. Nothing calls this yet. */
 function forget () {
   store.save('mascot', { name: '', memory: [] })
   return state()
