@@ -619,13 +619,21 @@
      it is in the air and how far it gets, so a heavier push is automatically
      a longer, higher hop and nothing has to be kept in step.
 
-       amble  vy 380 → 0.29s up and down, 27px high, 44px along
+       amble  vy 380 → 0.29s up and down, 27px high, 34px along
        hurry  vy 520 → 0.40s, 52px high, 132px along
 
      Which is near enough the stride and arc the tween used, arrived at from
-     the other end. */
+     the other end.
+
+     The amble was pushed at 150 and rested 0.26, which covered 44px a hop and
+     averaged 79px a second — faster than it looked, and fast enough that
+     reaching for it usually missed. Only the push and the pause came down;
+     `vy` is untouched, so the hop is the same height and the same time in the
+     air, and it still ambles rather than shuffling. The hurry is deliberately
+     unchanged: it is the gait for when a mood has somewhere to be, and a
+     hurry that does not hurry is just a walk with a different name. */
   const GAIT = {
-    amble: { vx: 150, vy: 380, rest: 0.26 },
+    amble: { vx: 115, vy: 380, rest: 0.30 },
     hurry: { vx: 330, vy: 520, rest: 0.05 }
   }
 

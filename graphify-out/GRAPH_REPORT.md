@@ -1,17 +1,30 @@
 # Graph Report - Haiky  (2026-08-22)
 
 ## Corpus Check
-- 34 files · ~52,032 words
+- 27 files · ~52,129 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
 - 396 nodes · 679 edges · 18 communities
 - Extraction: 88% EXTRACTED · 12% INFERRED · 0% AMBIGUOUS · INFERRED: 80 edges (avg confidence: 0.85)
-- Token cost: 237,991 input · 0 output
+- Token cost: 0 input · 0 output
+
+## Graph Freshness
+- Built from commit: `68b6e2ee`
+- Run `git rev-parse HEAD` and compare to check if the graph is stale.
+- Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - Channel Contract and Preload Seam
 - Voice Runtime, Ledger and Store
+- Click-Through Seam and the Port
+- Haiky Renderer Creature
+- Creature Identity and Voice
+- Origin Renderer Creature
+- Main Process Orchestration
+- Package Manifest and Dependencies
+- Electron Build Config
+- Overlay Window Geometry
 - Claude Code Hook Installer
 - Origin Mascot Agent Runtime
 - Session File Watcher
@@ -19,15 +32,7 @@
 - Tray Icon Generator
 - Renderer Glue and Spend Display
 - Intent Router
-- Click-Through Seam and the Port
-- Haiky Renderer Creature
-- Origin Renderer Creature
-- Main Process Orchestration
-- Overlay Window Geometry
-- Package Manifest and Dependencies
-- Electron Build Config
 - Eye Clipping and Gaze
-- Creature Identity and Voice
 
 ## God Nodes (most connected - your core abstractions)
 1. `Q: Which exported symbols in src/main are dead, and is any of it a real defect?` - 20 edges
@@ -35,23 +40,23 @@
 3. `draw()` - 17 edges
 4. `The Seam — eleven named channels in preload.js` - 17 edges
 5. `Q: Which creature physics crossed into main, which stayed in the DOM, and what decided the split` - 13 edges
-6. `tellInk()` - 11 edges
-7. `build` - 11 edges
+6. `build` - 11 edges
+7. `tellInk()` - 11 edges
 8. `Q: Why can no static tool see how Haiky's renderer talks to main, and what fixes it?` - 11 edges
-9. `wake()` - 10 edges
-10. `paintTray()` - 10 edges
+9. `paintTray()` - 10 edges
+10. `wake()` - 10 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `list()` --cites--> `Q: Which exported symbols in src/main are dead, and is any of it a real defect?`  [EXTRACTED]
-  src/main/sessions.js → graphify-out/memory/query_20260822_174328_which_exported_symbols_in_src_main_are_dead__and_i.md
-- `outline()` --cites--> `Q: Which exported symbols in src/main are dead, and is any of it a real defect?`  [EXTRACTED]
-  src/renderer/mascot.js → graphify-out/memory/query_20260822_174328_which_exported_symbols_in_src_main_are_dead__and_i.md
-- `tellInk()` --conceptually_related_to--> `The Renderer Never require()s Anything`  [INFERRED]
-  src/renderer/mascot.js → CLAUDE.md
-- `get()` --cites--> `Q: Which exported symbols in src/main are dead, and is any of it a real defect?`  [EXTRACTED]
-  src/main/overlay.js → graphify-out/memory/query_20260822_174328_which_exported_symbols_in_src_main_are_dead__and_i.md
-- `isShown()` --cites--> `Q: Which exported symbols in src/main are dead, and is any of it a real defect?`  [EXTRACTED]
-  src/main/overlay.js → graphify-out/memory/query_20260822_174328_which_exported_symbols_in_src_main_are_dead__and_i.md
+- `Q: Which exported symbols in src/main are dead, and is any of it a real defect?` --cites--> `EVENTS`  [EXTRACTED]
+  graphify-out/memory/query_20260822_174328_which_exported_symbols_in_src_main_are_dead__and_i.md → src/main/hooks.js
+- `haiky:ink — where the ink is, renderer to main` --shares_data_with--> `at`  [EXTRACTED]
+  IPC.md → src/main/overlay.js
+- `Q: Which exported symbols in src/main are dead, and is any of it a real defect?` --cites--> `get()`  [EXTRACTED]
+  graphify-out/memory/query_20260822_174328_which_exported_symbols_in_src_main_are_dead__and_i.md → src/main/overlay.js
+- `Q: Which exported symbols in src/main are dead, and is any of it a real defect?` --cites--> `isShown()`  [EXTRACTED]
+  graphify-out/memory/query_20260822_174328_which_exported_symbols_in_src_main_are_dead__and_i.md → src/main/overlay.js
+- `Q: Which exported symbols in src/main are dead, and is any of it a real defect?` --cites--> `list()`  [EXTRACTED]
+  graphify-out/memory/query_20260822_174328_which_exported_symbols_in_src_main_are_dead__and_i.md → src/main/sessions.js
 
 ## Import Cycles
 - None detected.
@@ -68,47 +73,23 @@
 
 ### Community 0 - "Channel Contract and Preload Seam"
 Cohesion: 0.07
-Nodes (44): writeRun(), readAuth(), { contextBridge, ipcRenderer }, .mas-fx — dots and question mark, .mas-say speech bubble, Claude Code Signal Pipeline (sessions.js, bridge.js, hooks.js), haiky:act — an act by name, against the allowlist, haiky:ready — is there a voice on this machine (+36 more)
+Nodes (44): Comments Explain Why, Not What, Claude Code Signal Pipeline (sessions.js, bridge.js, hooks.js), The MASCOT.md Promise Is Kept By Not Sending, Read IPC.md Before Crossing the Preload, Q: Why can no static tool see how Haiky's renderer talks to main, and what fixes it?, Adding a Twelfth Channel (four edits, in order), haiky:act — an act by name, against the allowlist, haiky:ready — is there a voice on this machine (+36 more)
 
 ### Community 1 - "Voice Runtime, Ledger and Store"
 Cohesion: 0.09
-Nodes (36): bill(), character(), executable(), forget(), keep(), ready(), rollWeek(), situation() (+28 more)
-
-### Community 10 - "Claude Code Hook Installer"
-Cohesion: 0.22
-Nodes (18): backup(), exists(), handler(), install(), mine(), preview(), read(), readable() (+10 more)
-
-### Community 11 - "Origin Mascot Agent Runtime"
-Cohesion: 0.18
-Nodes (18): character(), executable(), forget(), keep(), load(), rollWeek(), situation(), state() (+10 more)
-
-### Community 12 - "Session File Watcher"
-Cohesion: 0.18
-Nodes (17): alive(), drop(), key(), later(), list(), read(), rescan(), soon() (+9 more)
-
-### Community 13 - "Loopback Hook Bridge Server"
-Cohesion: 0.17
-Nodes (14): handle(), listen(), loopback(), publish(), set(), start(), state(), worst() (+6 more)
-
-### Community 14 - "Tray Icon Generator"
-Cohesion: 0.22
-Nodes (9): chunk(), crc(), png(), app, crcTable, fs, out, path (+1 more)
-
-### Community 15 - "Renderer Glue and Spend Display"
-Cohesion: 0.43
-Nodes (6): money(), paintSpend(), put(), short(), tokens(), pfMascot
-
-### Community 16 - "Intent Router"
-Cohesion: 0.38
-Nodes (6): match(), pick(), wrap(), READY, TABLE, turn
+Nodes (36): Never Bump a DOCS version Casually, Q: Which exported symbols in src/main are dead, and is any of it a real defect?, The Weekly Ledger Never Rolls Over, ACTS, { app }, bill(), character(), executable() (+28 more)
 
 ### Community 2 - "Click-Through Seam and the Port"
 Cohesion: 0.10
-Nodes (32): pollCursor(), setIgnore(), Q: Why the Origin packing list bridges Creature Identity to Click-Through Overlay Physics, Q: Which creature physics crossed into main, which stayed in the DOM, and what decided the split, Graphify Query-First Convention, Tray Icons Drawn From the Creature's Superellipse, overlay.js — transparent click-through window, One Physics System (gravity, velocity, floor, ceiling, walls) (+24 more)
+Nodes (32): build/ Is Not Scanned — Source Belongs in tools/, CSS Is Not a graphify File Type (mascot.css is invisible to the graph), Graphify Query-First Convention, Haiky - Electron Creature on a Click-Through Taskbar Overlay, The Renderer Never require()s Anything, Tray Icons Drawn From the Creature's Superellipse, Vendor Snapshot Is Read Only, Q: Why the Origin packing list bridges Creature Identity to Click-Through Overlay Physics (+24 more)
 
 ### Community 3 - "Haiky Renderer Creature"
 Cohesion: 0.15
-Nodes (30): askSomething(), bubble(), choose(), draw(), eyePath(), fling(), goTo(), grab() (+22 more)
+Nodes (30): haiky:focus — lift focusability for the ask box, askSomething(), bubble(), choose(), draw(), eyePath(), fling(), goTo() (+22 more)
+
+### Community 4 - "Creature Identity and Voice"
+Cohesion: 0.07
+Nodes (31): Cannot Read Code, Files or Transcript, Company, Not a Colleague, European Portuguese Mirroring, The Creature (Haiky system prompt), extraResources / asar exclusion for the Claude Code binary, Haiky, Three Router Guards (length, question mark, anchored patterns), intents.js — free regex router for body imperatives (+23 more)
 
 ### Community 5 - "Origin Renderer Creature"
 Cohesion: 0.15
@@ -116,31 +97,62 @@ Nodes (23): askSomething(), bubble(), caretPoint(), choose(), draw(), eyePath(),
 
 ### Community 6 - "Main Process Orchestration"
 Cohesion: 0.14
-Nodes (24): applyAutostart(), askToInstall(), autostartOn(), backupDir(), buildTray(), paintTray(), prefs(), refreshShown() (+16 more)
-
-### Community 9 - "Overlay Window Geometry"
-Cohesion: 0.15
-Nodes (16): barRect(), layout(), strip(), create(), get(), isShown(), layout(), place_() (+8 more)
+Nodes (24): ACT, { app, Tray, Menu, dialog, nativeImage, nativeTheme, globalShortcut, ipcMain, shell }, applyAutostart(), askToInstall(), autostartOn(), backupDir(), bridge, buildTray() (+16 more)
 
 ### Community 7 - "Package Manifest and Dependencies"
 Cohesion: 0.09
-Nodes (21): author, dependencies, @anthropic-ai/claude-agent-sdk, description, devDependencies, electron, electron-builder, license (+13 more)
+Nodes (21): @anthropic-ai/claude-agent-sdk, electron, electron-builder, author, dependencies, @anthropic-ai/claude-agent-sdk, description, devDependencies (+13 more)
 
 ### Community 8 - "Electron Build Config"
 Cohesion: 0.10
 Nodes (21): build, appId, asar, asarUnpack, directories, extraResources, files, npmRebuild (+13 more)
 
+### Community 9 - "Overlay Window Geometry"
+Cohesion: 0.15
+Nodes (16): haiky:place — strip and bar geometry, main to renderer, barRect(), layout(), { screen }, strip(), at, { BrowserWindow, screen, ipcMain }, create() (+8 more)
+
+### Community 10 - "Claude Code Hook Installer"
+Cohesion: 0.22
+Nodes (18): backup(), EVENTS, exists(), FILE, fs, handler(), install(), mine() (+10 more)
+
+### Community 11 - "Origin Mascot Agent Runtime"
+Cohesion: 0.18
+Nodes (18): ACTS, { app }, character(), executable(), forget(), fs, keep(), load() (+10 more)
+
+### Community 12 - "Session File Watcher"
+Cohesion: 0.18
+Nodes (17): alive(), current, DIR, drop(), fs, key(), later(), list() (+9 more)
+
+### Community 13 - "Loopback Hook Bridge Server"
+Cohesion: 0.17
+Nodes (14): crypto, handle(), http, lapses, listen(), loopback(), publish(), RANK (+6 more)
+
+### Community 14 - "Tray Icon Generator"
+Cohesion: 0.22
+Nodes (9): app, chunk(), crc(), crcTable, fs, out, path, png() (+1 more)
+
+### Community 15 - "Renderer Glue and Spend Display"
+Cohesion: 0.43
+Nodes (6): money(), paintSpend(), pfMascot, put(), short(), tokens()
+
+### Community 16 - "Intent Router"
+Cohesion: 0.38
+Nodes (6): match(), pick(), READY, TABLE, turn, wrap()
+
 ### Community 17 - "Eye Clipping and Gaze"
 Cohesion: 0.50
-Nodes (4): #mas-cut clipPath (eye trimming), #mas-cut clipPath (snapshot; was a mask until Aug 2026), The Gaze Is Expressive, Not Optical, Eyes Were Holes, Now Filled and Clipped
-
-### Community 4 - "Creature Identity and Voice"
-Cohesion: 0.07
-Nodes (31): .mas-ask input form, Companion Switch (#pf-mascot), Talk to the Creature shortcut row (⌘T), #chat-spend — the agent's spend ledger, #mas-spend — the creature's spend ledger, #masmenu — right-button menu with one Talk item, Deferred mascot.js script tag, intents.js — free regex router for body imperatives (+23 more)
+Nodes (4): #mas-cut clipPath (eye trimming), The Gaze Is Expressive, Not Optical, Eyes Were Holes, Now Filled and Clipped, #mas-cut clipPath (snapshot; was a mask until Aug 2026)
 
 ## Knowledge Gaps
-- **100 isolated node(s):** `{ contextBridge, ipcRenderer }`, `{ app }`, `fs`, `path`, `{ query, SYSTEM_PROMPT_DYNAMIC_BOUNDARY }` (+95 more)
+- **100 isolated node(s):** `name`, `version`, `description`, `main`, `author` (+95 more)
   These have ≤1 connection - possible missing edges or undocumented components.
+
+## Work-memory lessons
+
+**Preferred sources** — corroborated by past sessions; start here.
+- `preload.js` (2× useful, score=1.999280149)
+- `tellInk()` (2× useful, score=1.999280149) _(code changed — re-verify)_
+- `Hit Test Lives in Main (30Hz cursor poll)` (2× useful, score=1.99864672)
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
@@ -151,9 +163,9 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.067) - this node is a cross-community bridge._
 - **Why does `Act Table (one act per reply)` connect `Channel Contract and Preload Seam` to `Creature Identity and Voice`?**
   _High betweenness centrality (0.065) - this node is a cross-community bridge._
-- **Are the 3 inferred relationships involving `Q: Which creature physics crossed into main, which stayed in the DOM, and what decided the split` (e.g. with `haiky:ink — where the ink is, renderer to main` and `Click-Through Window (WS_EX_TRANSPARENT)`) actually correct?**
+- **Are the 3 inferred relationships involving `Q: Which creature physics crossed into main, which stayed in the DOM, and what decided the split` (e.g. with `Q: Why the Origin packing list bridges Creature Identity to Click-Through Overlay Physics` and `haiky:ink — where the ink is, renderer to main`) actually correct?**
   _`Q: Which creature physics crossed into main, which stayed in the DOM, and what decided the split` has 3 INFERRED edges - model-reasoned connections that need verification._
-- **What connects `{ contextBridge, ipcRenderer }`, `{ app }`, `fs` to the rest of the system?**
+- **What connects `name`, `version`, `description` to the rest of the system?**
   _100 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Channel Contract and Preload Seam` be split into smaller, more focused modules?**
   _Cohesion score 0.0696969696969697 - nodes in this community are weakly interconnected._

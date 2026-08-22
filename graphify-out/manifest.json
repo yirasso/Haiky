@@ -66,10 +66,10 @@
     "semantic_hash": "56d5f763ca47fc86d45fdc24b1ee1dbe"
   },
   "src/renderer/mascot.js": {
-    "mtime": 1787416407.3086565,
-    "seen": 1787417907.76751,
-    "ast_hash": "1a8053ebbab8faa55c1ff38023296674",
-    "semantic_hash": "1a8053ebbab8faa55c1ff38023296674"
+    "mtime": 1787423067.6494966,
+    "seen": 1787423341.1079557,
+    "ast_hash": "499e2c4cc043b0d74faa46fd78e8cf10",
+    "semantic_hash": ""
   },
   "vendor/removed-snapshot/host/main-glue.js": {
     "mtime": 1787406990.1890774,

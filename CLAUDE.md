@@ -56,5 +56,6 @@ Rules:
 - After modifying code, run `graphify update .` to keep the graph current (AST-only, no API cost). `npm run graph` does the same. A `post-commit` hook also rebuilds it, so a normal commit keeps it fresh without being asked.
 - `graphify-out/graph.json`, `GRAPH_REPORT.md`, `wiki/`, `memory/` and `reflections/` are committed. Everything else under `graphify-out/` is regenerable and gitignored — `graphify export html|svg|graphml|obsidian|neo4j|callflow-html` and `graphify tree` rebuild those on demand.
 - `.mcp.json` exposes the same graph over MCP (`query_graph`, `shortest_path`, `god_nodes`, …) to any agent that reads it.
+- Ignore the "Token cost" line in `GRAPH_REPORT.md`. A code-only rebuild passes zeros for it, so the post-commit hook resets it to `0 input · 0 output` every time. `graphify-out/cost.json` is the real ledger and is not touched by rebuilds.
 - One known gap in the graph, so you do not trust it further than it goes: `.css` is not a graphify file type, so `src/renderer/mascot.css` is invisible to it. The CSS custom properties the creature needs are listed in `vendor/removed-snapshot/README.md`.
 - Nothing under `build/` is scanned — graphify skips it by convention. That is why the icon generator lives in `tools/`; put anything else that is source rather than resource there too, or the graph will not see it.
