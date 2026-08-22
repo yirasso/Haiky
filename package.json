@@ -1,0 +1,59 @@
+{
+  "name": "haiky",
+  "version": "0.1.0",
+  "description": "A small creature that lives over the Windows taskbar and keeps company while Claude Code works.",
+  "main": "src/main/main.js",
+  "author": "Tomás",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "icon": "node build/make-icon.js",
+    "pack": "electron-builder --win --dir",
+    "dist": "electron-builder --win"
+  },
+  "devDependencies": {
+    "electron": "^43.4.0",
+    "electron-builder": "^26.15.3"
+  },
+  "dependencies": {
+    "@anthropic-ai/claude-agent-sdk": "^0.3.235"
+  },
+  "build": {
+    "appId": "co.nanomark.haiky",
+    "productName": "Haiky",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "src/**/*",
+      "MASCOT.md",
+      "package.json",
+      "!**/node_modules/@anthropic-ai/claude-agent-sdk-*/**"
+    ],
+    "asar": true,
+    "asarUnpack": [
+      "**/node_modules/@anthropic-ai/claude-agent-sdk/**"
+    ],
+    "npmRebuild": false,
+    "extraResources": [
+      {
+        "from": "node_modules/@anthropic-ai/claude-agent-sdk-win32-x64",
+        "to": "claude"
+      }
+    ],
+    "win": {
+      "target": [
+        { "target": "nsis", "arch": ["x64"] },
+        { "target": "portable", "arch": ["x64"] }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "shortcutName": "Haiky"
+    }
+  }
+}

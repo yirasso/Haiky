@@ -1,0 +1,168 @@
+/* Everything the creature is painted with.
+
+   Ported from vendor/removed-snapshot/renderer/mascot.css. Every rule about
+   the creature itself is unchanged; what is new is the block of tokens at the
+   top, because in Origin those were the app's and here there is no app.
+
+   The palette follows the system, and the reason is not tidiness. `--ink` is
+   the body. Windows paints its taskbar dark by default, and a #0F1218
+   creature standing on a black bar is not a creature, it is a rumour. So the
+   pair turns over with the OS theme: pale body and dark eyes on a dark bar,
+   the other way round on a light one. The mood colours do not turn over —
+   they are the same red, yellow and blue either way, which is what lets the
+   fixed dark eye below work against both. */
+
+:root {
+  color-scheme: light dark;
+
+  /* the creature */
+  --ink: #0F1218;
+  --paper: #F7F9FD;
+
+  /* the moods, and the halo. Unchanged between themes on purpose. */
+  --i-1: #FF4A1C;     /* angry */
+  --i-2: #FFB347;
+  --i-3: #FFD166;     /* happy */
+  --i-5: #4FB6D8;
+  --i-6: #2E6E96;     /* sad, taken down toward ink below */
+
+  /* the speech bubble, the ask box, the menu */
+  --raised: #FFFFFF;
+  --mute: #5E636D;
+  --faint: #646A78;
+  --line: rgba(16, 20, 30, .09);
+  --line-2: rgba(16, 20, 30, .16);
+  --r-3: 12px;
+  --fs-3: 12px;
+  --fs-4: 13px;
+  --shadow-pop: 0 1px 2px rgba(16, 22, 38, .06), 0 14px 34px -14px rgba(16, 22, 38, .30);
+  --ease: cubic-bezier(.16, 1, .3, 1);
+
+  /* how big it is. Written by main from prefs; 60px is the size every
+     fraction in mascot.js was measured against. */
+  --mas-size: 60px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #F2F0EA;
+    --paper: #1A1A18;
+    --raised: #212120;
+    --mute: #A6A296;
+    --faint: #9A9587;
+    --line: rgba(242, 240, 234, .10);
+    --line-2: rgba(242, 240, 234, .19);
+    --shadow-pop: 0 1px 2px rgba(0, 0, 0, .38), 0 18px 40px -16px rgba(0, 0, 0, .80);
+  }
+}
+
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+  font: var(--fs-4) / 1.45 "Segoe UI", system-ui, sans-serif;
+}
+
+/* ── somebody in there ──
+   `pointer-events` is `none` on the layer and `auto` on the ink, which is a
+   split worth understanding: only the drawn shape catches the pointer, never
+   its 60px box, so the corners of the square sitting over your Start button
+   are still your Start button.
+
+   In Origin that split was the whole of it. Here it is only the half that
+   lives inside the page: the window itself is click-through at the Win32
+   level, and mascot.js tells main when the pointer crosses onto the ink so
+   that the two sides say the same thing. Either half alone is a bug you can
+   see — the layer eating your taskbar, or the creature you cannot grab.
+
+   It has no background and must not acquire one. */
+.mas-w { position: fixed; inset: 0; pointer-events: none; overflow: hidden }
+.mas {
+  position: absolute; left: 0; top: 0;
+  width: var(--mas-size); height: var(--mas-size);
+  display: block; overflow: visible;
+}
+
+/* Anger is the palette's own red, faded in over the same time the shape takes
+   to change. A transition is safe here where it would be wrong elsewhere in
+   this block: fill is set by CSS and never rewritten per frame, so there is
+   nothing for it to fight. The shaking is in the script. */
+.mas-body { fill: var(--ink); pointer-events: auto; cursor: grab; transition: fill .42s var(--ease) }
+.mas[data-pose="angry"] .mas-body { fill: var(--i-1) }
+.mas[data-pose="happy"] .mas-body { fill: var(--i-3) }
+/* the palette blue taken down toward ink, because "dark blue" is not a hue the
+   ring has on its own and inventing one would be a colour nothing else uses */
+.mas[data-pose="sad"] .mas-body { fill: color-mix(in srgb, var(--i-6) 74%, var(--ink)) }
+
+/* A turn in Claude Code has finished. The bright blue of the ring, and the
+   only colour on the creature that is never about how it feels: red is
+   anger, yellow is delight, the dark blue above is disappointment. So this
+   one arriving on the taskbar can only be the app, which is the whole point
+   of spending a hue on it. */
+.mas[data-pose="alert"] .mas-body { fill: var(--i-5) }
+
+/* The eyes, filled — the opposite end of the same pair the body is drawn
+   from, so they stay the far side of the body in every theme and under every
+   mood colour. */
+.mas-eye { fill: var(--paper) }
+
+/* Except when a mood paints the body bright, and then the pair has to turn
+   over. Measured, because it was judged once and judged wrong: a paper eye on
+   the happy yellow is 1.4:1, which is not a face with eyes in it. This dark
+   reads 12.9:1 on the yellow and 5.5:1 on the red. */
+.mas[data-pose="happy"] .mas-eye,
+.mas[data-pose="alert"] .mas-eye,
+.mas[data-pose="angry"] .mas-eye { fill: #16130C }
+
+/* What happens over its head. Drawn rather than typed: three circles and one
+   stroked curve, positioned and faded by the script. A glyph here would be the
+   system font having an opinion about the creature's face. */
+.mas-fx { pointer-events: none }
+.mas-dot { fill: var(--ink) }
+.mas-huh-h { stroke: var(--ink); stroke-width: 2.7; fill: none }
+.mas-huh-d { fill: var(--ink) }
+
+.mas[data-held] .mas-body { cursor: grabbing }
+/* the palette read rather than transcribed — the ring lives in one place */
+.mas-s1 { stop-color: var(--i-3) }
+.mas-s2 { stop-color: var(--i-2) }
+.mas-s3 { stop-color: var(--i-5) }
+
+/* Off is display:none and nothing else. mascot.js measures its own svg at the
+   top of every frame and stops when there is nothing to draw into, so this one
+   rule is the engine switch too — no flag to keep in step, no teardown. */
+body[data-mascot="off"] .mas-w { display: none }
+
+/* What it says, and where you say something back. Both travel with the
+   creature, so both are positioned by the script rather than anchored here.
+
+   The bubble is a bubble and not a panel on purpose: MASCOT.md holds the
+   creature to a sentence or two and the reply schema has nowhere to put more,
+   so it never needs to scroll and must never look like it could. If this ever
+   grows a scrollbar the character file is being ignored, and that is the bug —
+   not the height. */
+.mas-say, .mas-ask { position: absolute; left: 0; top: 0; pointer-events: none }
+.mas-say {
+  max-width: 236px; padding: 8px 11px;
+  border-radius: var(--r-3); border: 1px solid var(--line);
+  background: var(--raised); color: var(--ink);
+  font-size: var(--fs-4); line-height: 1.45; text-wrap: pretty;
+  box-shadow: var(--shadow-pop);
+}
+/* waiting for it to think of something: the same bubble, quieter */
+.mas-say[data-wait] { color: var(--mute) }
+
+/* the one part of the whole layer that takes a pointer besides the ink */
+.mas-ask { pointer-events: auto }
+.mas-ask input {
+  width: 236px; padding: 8px 11px;
+  border-radius: var(--r-3); border: 1px solid var(--line-2);
+  background: var(--paper); color: var(--ink);
+  font: inherit; font-size: var(--fs-4);
+  box-shadow: var(--shadow-pop); outline: none;
+}
+.mas-ask input::placeholder { color: var(--faint) }
+.mas-ask input:focus { border-color: var(--mute) }

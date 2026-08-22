@@ -1,0 +1,79 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Haiky</title>
+<link rel="stylesheet" href="mascot.css">
+
+<!-- The creature: the layer it lives in, the shape it moves, what it says.
+
+     Ported from vendor/removed-snapshot/renderer/mascot.html. The markup is
+     unchanged except for one thing, and it is on purpose: the original closed
+     the <svg> twice. The parser dropped the orphan and the app always worked,
+     and Origin's own README left it in place so that the fix would be a
+     decision somebody made rather than one that happened to them. This is that
+     decision. There is one </svg> below.
+
+     The layer is the whole window here rather than a fixed sheet over an app,
+     which changes nothing about it: position:fixed still measures against the
+     viewport and nothing else. The layer takes no pointer events, ever. A
+     creature that can stand anywhere is a creature that can stand on your
+     Start button, and the answer is for it to be untouchable rather than for
+     it to be careful. -->
+<div class="mas-w">
+  <svg class="mas" viewBox="0 0 100 100" data-pose="idle" aria-hidden="true">
+    <defs>
+      <radialGradient id="mas-halo-g" cx="50%" cy="50%" r="50%">
+        <stop class="mas-s1" offset="0%" stop-opacity="0"/>
+        <stop class="mas-s2" offset="66%" stop-opacity=".75"/>
+        <stop class="mas-s3" offset="100%" stop-opacity="0"/>
+      </radialGradient>
+      <!-- The silhouette a second time, as a clip for the eyes. An eye that
+           slides past the edge as the creature turns away is trimmed against
+           the body rather than left hanging outside it, and nobody has to work
+           out where the edge is.
+
+           Paths and not ellipses, and that is what makes the faces possible: a
+           thin ellipse bowed upward is the ⌒ of a smile, an unbowed circle is
+           the resting eye, and a bow the other way is a scowl. One shape, one
+           number, every expression in between — see EYE in mascot.js. -->
+      <clipPath id="mas-cut">
+        <path class="mas-clip-p" d=""/>
+      </clipPath>
+    </defs>
+    <ellipse class="mas-halo" cx="50" cy="54" rx="48" ry="46" fill="url(#mas-halo-g)" opacity=".32"/>
+    <g class="mas-b">
+      <path class="mas-body" d=""/>
+      <!-- inside .mas-b, so the clip geometry is in the same coordinates the
+           body path is written in and the lean carries both -->
+      <g clip-path="url(#mas-cut)">
+        <path class="mas-eye mas-eye-l" d=""/>
+        <path class="mas-eye mas-eye-r" d=""/>
+      </g>
+    </g>
+
+    <!-- What happens over its head, outside the body and outside the clip:
+         three dots while it is thinking, and a question mark when it has been
+         asked something it cannot do. Both are geometry — circles and a
+         stroked curve — because a glyph would be the system font having an
+         opinion about the creature's face. -->
+    <g class="mas-fx">
+      <circle class="mas-dot" data-i="0" r="3.1" opacity="0"/>
+      <circle class="mas-dot" data-i="1" r="3.1" opacity="0"/>
+      <circle class="mas-dot" data-i="2" r="3.1" opacity="0"/>
+      <g class="mas-huh" opacity="0">
+        <path class="mas-huh-h" d="M -6.4 -9.6 C -6.4 -15.4 1.2 -17.4 4.6 -13.6 C 7.8 -10 5.2 -6 2.2 -3.8 C 0.2 -2.3 -0.5 -0.9 -0.5 1.2" fill="none" stroke-linecap="round"/>
+        <circle class="mas-huh-d" cx="-0.5" cy="6.2" r="1.9"/>
+      </g>
+    </g>
+  </svg>
+
+  <!-- What it says, and where you say something back. Both live in the layer
+       so they travel with the creature, and both are position:absolute over
+       it rather than inside the svg: text in an svg is text that has to be
+       laid out by hand, and the bubble wraps. -->
+  <div class="mas-say" role="status" aria-live="polite" hidden></div>
+  <form class="mas-ask" hidden autocomplete="off">
+    <input type="text" maxlength="400" placeholder="Say something" aria-label="Say something to the creature" spellcheck="false">
+  </form>
+</div>
+
+<script src="mascot.js"></script>
