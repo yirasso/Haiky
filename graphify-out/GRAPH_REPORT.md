@@ -7,7 +7,7 @@
 ## Summary
 - 396 nodes · 679 edges · 18 communities
 - Extraction: 88% EXTRACTED · 12% INFERRED · 0% AMBIGUOUS · INFERRED: 80 edges (avg confidence: 0.85)
-- Token cost: 177,132 input · 0 output
+- Token cost: 237,991 input · 0 output
 
 ## Community Hubs (Navigation)
 - Channel Contract and Preload Seam
