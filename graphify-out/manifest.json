@@ -190,5 +190,17 @@
     "seen": 1787420373.9534166,
     "ast_hash": "ea10d522f803c26a91ad9c33536602ff",
     "semantic_hash": "ea10d522f803c26a91ad9c33536602ff"
+  },
+  "graphify-out/memory/query_20260822_174328_which_exported_symbols_in_src_main_are_dead__and_i.md": {
+    "mtime": 1787420608.9326053,
+    "seen": 1787420836.738314,
+    "ast_hash": "518776bc0ebe4961aa54d15f6d763ac7",
+    "semantic_hash": "518776bc0ebe4961aa54d15f6d763ac7"
+  },
+  "graphify-out/memory/query_20260822_174329_why_can_no_static_tool_see_how_haiky_s_renderer_ta.md": {
+    "mtime": 1787420609.2649035,
+    "seen": 1787420836.7383156,
+    "ast_hash": "ce760677f9298d04b4fb0d77a05f4331",
+    "semantic_hash": "ce760677f9298d04b4fb0d77a05f4331"
   }
 }
