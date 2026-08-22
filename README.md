@@ -9,6 +9,8 @@ bar, watches the pointer, falls asleep when you go away, and changes what it is
 doing when Claude Code changes what *it* is doing. Right-click it and it talks
 back; say nothing and it says nothing, forever.
 
+![The creature standing on the taskbar](docs/images/creature.png)
+
 </div>
 
 ---
@@ -50,6 +52,8 @@ Five hooks post to a loopback server, and the creature wears the answer:
 | a turn failed | the worried face |
 | you asked *it* something | the squint, and the three dots |
 
+![A turn has finished: bright blue, and a hop](docs/images/done.png)
+
 **The three dots are the creature's, not Claude Code's.** They used to mean a
 turn was running, which was the wrong owner — three dots are the universal sign
 for *I* am thinking, and lending them to somebody else's work says one thing
@@ -72,9 +76,19 @@ a race.
 
 Left button picks it up, right button opens a box over its head.
 
+![The ask box, open over the creature](docs/images/ask.png)
+
 Short imperatives about its own body — *dorme*, *salta*, *fica maior*,
 *vai-te embora* — never leave the machine and cost nothing. Everything else goes
 to Haiku: no preset, no tools, one turn, a structured reply.
+
+| | |
+| --- | --- |
+| **while it thinks** | **when it answers** |
+| ![the squint and the three dots](docs/images/think.png) | ![the bubble over its head](docs/images/say.png) |
+
+The squint and the dots are up only while a question of yours is in flight.
+That is the whole of what they mean now.
 
 `MASCOT.md` is not documentation about the prompt. It **is** the prompt. Editing
 that file changes the creature and touches no code.
@@ -126,6 +140,7 @@ for when `app.isPackaged`.
 | ------ | --- |
 | `npm start` | `electron .` |
 | `npm run icon` | regenerate the app icon and both tray icons |
+| `npm run shots` | regenerate the screenshots in `docs/images/` |
 | `npm run pack` | unpacked win build, for looking at |
 | `npm run dist` | the NSIS installer and the portable exe |
 | `npm run graph` | rebuild the knowledge graph in `graphify-out/` |
@@ -138,6 +153,7 @@ for when `app.isPackaged`.
 | Voice | `@anthropic-ai/claude-agent-sdk` | Haiku, **no preset** — a plain string in `systemPrompt` replaces `claude_code` outright |
 | Renderer | none | `src/renderer/` never `require`s anything |
 | Icons | `tools/make-icon.js` | drawn from the same superellipse the engine uses, so no exported asset can drift |
+| Screenshots | `tools/shoot.js` | the shipping renderer, loaded and photographed — see below |
 | Packaging | electron-builder | NSIS + portable, x64 |
 | Graph | graphify | `graphify-out/`, rebuilt by a post-commit hook |
 
@@ -147,6 +163,22 @@ The icon generator emits a pale creature for a dark taskbar and a dark one for a
 light taskbar, picked at runtime from `nativeTheme` and followed live. Windows
 does not invert a tray icon for you, and the first build shipped a black
 creature on a black taskbar.
+
+**The screenshots are generated too, and two things in them are not the app.**
+`tools/shoot.js` loads `src/renderer/overlay.html` — the shipping renderer, its
+own stylesheet, its own 1,532 lines — into an ordinary window, drives it
+through the same surfaces main drives it through, and photographs it. The
+creature, its shape, its colours, its physics and where every bubble lands are
+therefore the real thing, at the real 60px. The **backdrop is drawn rather than
+photographed**, because a picture of a real desktop puts whatever happened to
+be open that afternoon into a public repository, and the **one sentence it
+says was written rather than paid for**. Everything else in the frame is the
+app answering for itself.
+
+The stand-in bridge lives in `tools/shoot-preload.js` and answers the same
+eleven channels. `src/renderer/mascot.js` guards every use of `window.haiky`
+precisely so that it can be opened outside Electron and looked at; this is that
+door, used by a camera.
 
 ## Layout
 
@@ -166,7 +198,10 @@ src/
   renderer/       the creature — pose sampling, physics, drawing
 IPC.md            what those eleven channels carry
 MASCOT.md         the prompt, which is to say the character
-tools/            source that is not shipped: the icon generator
+tools/            source that is not shipped
+  make-icon.js    the app icon and both tray icons
+  shoot.js        the screenshots below, and the bridge they are driven through
+docs/images/      those screenshots, regenerable
 vendor/           read-only: where the creature came from
 ```
 

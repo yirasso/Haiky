@@ -9,6 +9,7 @@
   "scripts": {
     "start": "electron .",
     "icon": "node tools/make-icon.js",
+    "shots": "electron tools/shoot.js",
     "pack": "electron-builder --win --dir",
     "dist": "electron-builder --win",
     "graph": "graphify update ."
