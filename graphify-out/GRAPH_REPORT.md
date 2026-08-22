@@ -1,7 +1,7 @@
 # Graph Report - Haiky  (2026-08-22)
 
 ## Corpus Check
-- 27 files · ~52,129 words
+- 27 files · ~52,357 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `68b6e2ee`
+- Built from commit: `441fc105`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -152,7 +152,7 @@ Nodes (4): #mas-cut clipPath (eye trimming), The Gaze Is Expressive, Not Optical
 **Preferred sources** — corroborated by past sessions; start here.
 - `preload.js` (2× useful, score=1.999280149)
 - `tellInk()` (2× useful, score=1.999280149) _(code changed — re-verify)_
-- `Hit Test Lives in Main (30Hz cursor poll)` (2× useful, score=1.99864672)
+- `Hit Test Lives in Main (30Hz cursor poll)` (2× useful, score=1.99864672) _(code changed — re-verify)_
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_

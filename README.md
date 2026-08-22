@@ -333,8 +333,13 @@ takes an argument from the renderer, the guarantee is gone.
 
 ## Known limits
 
-- A genuinely full-screen app covers the overlay. That is correct. `Ctrl+Shift+H`
-  and the tray both hide it.
+- A genuinely full-screen app covers the overlay. That is correct.
+  `Ctrl+Shift+H` hides it and brings it back. The tray no longer carries that
+  switch: a second word for Quit that left the app running invisibly was one
+  of the two being misread, so if you do not want it, close it. The shortcut
+  can fail to register when something else already holds the combination —
+  launching Haiky again is the way back from a creature that is hidden, since
+  the second instance hands the first one *on* and exits.
 - An auto-hidden taskbar reports no rectangle to subtract, so the creature
   stands where the bar will be when it slides back up.
 - The primary display only, for now.

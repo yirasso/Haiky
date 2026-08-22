@@ -30,10 +30,10 @@
     "semantic_hash": "e14439c364acaf8ac11fcd9081d5ef71"
   },
   "src/main/main.js": {
-    "mtime": 1787416845.0926561,
-    "seen": 1787417907.7675042,
-    "ast_hash": "e5c4869d18975dd9ca95124bff4d2783",
-    "semantic_hash": "e5c4869d18975dd9ca95124bff4d2783"
+    "mtime": 1787424003.679427,
+    "seen": 1787424479.905672,
+    "ast_hash": "49dcbbfdee07341cc16614f9985e92f9",
+    "semantic_hash": ""
   },
   "src/main/mascot.js": {
     "mtime": 1787419288.9599764,
@@ -102,10 +102,10 @@
     "semantic_hash": "203abdc49978381a6606f114cbd5b659"
   },
   "README.md": {
-    "mtime": 1787420280.5925887,
-    "seen": 1787420373.9534285,
-    "ast_hash": "270e26e65c199ccbe3063d69208ab526",
-    "semantic_hash": "270e26e65c199ccbe3063d69208ab526"
+    "mtime": 1787424040.1885707,
+    "seen": 1787424479.9056947,
+    "ast_hash": "ca103e65cd7788ceb3776f84b46ed06c",
+    "semantic_hash": ""
   },
   "src/renderer/overlay.html": {
     "mtime": 1787414632.4807155,
@@ -168,10 +168,10 @@
     "semantic_hash": "60fe45185cae617d2882e00c17ece0bb"
   },
   "CLAUDE.md": {
-    "mtime": 1787420294.9108212,
-    "seen": 1787420373.9534245,
-    "ast_hash": "9d4ff50be9081f3296c3766a8573a7ee",
-    "semantic_hash": "9d4ff50be9081f3296c3766a8573a7ee"
+    "mtime": 1787423367.5317698,
+    "seen": 1787424479.9056907,
+    "ast_hash": "a4d0ac1b71dcdd7e69edb9a436d78185",
+    "semantic_hash": ""
   },
   "graphify-out/memory/query_20260822_170359_why_does__haiky___the_origin_creature_packed_for.md": {
     "mtime": 1787418239.667431,

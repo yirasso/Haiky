@@ -93,7 +93,15 @@ const autostartOn = () => !!app.getLoginItemSettings().openAtLogin
    written. The dialog prints the JSON rather than a description of it: a
    summary of a settings change is a summary somebody has to take on trust,
    and this is the one action in the app that touches a file Haiky does not
-   own. */
+   own.
+
+   Nothing calls this, or uninstall(), since the tray item that did was
+   removed. On this machine the hooks are already in and syncHooks() keeps
+   them repaired, so nothing is missing — but a fresh install now has no way
+   to put them in, and without them the creature never learns what Claude Code
+   is doing, which is the whole of what it is for. Both are kept whole rather
+   than deleted because what is missing is the entry point, not the
+   machinery. */
 async function askToInstall () {
   const { port, token } = bridge.state()
   if (!port) {
@@ -204,35 +212,29 @@ function spent () {
   return s.spent.calls + (s.spent.calls === 1 ? ' reply' : ' replies') + ' · ' + money
 }
 
+/* The menu is what it costs, two switches, and the way out.
+
+   The bill is first because it is the only line here you open the menu to
+   read; everything else you came to click. What Claude Code is doing was the
+   top line and is now nowhere: the creature on your taskbar already says it,
+   in colour and in posture, and a menu that restates the thing you can see is
+   a menu that made you open it for nothing.
+
+   There is no master switch any more. "Somebody there" was a second way to
+   mean Quit that left the app running invisibly, and two words for one
+   intention is one of them being misread. If you do not want it, close it. */
 function paintTray () {
   if (!tray) return
   const p = prefs()
-  const on = !!p.hooksInstalled
-  const where = live.length === 0
-    ? 'No Claude Code open'
-    : live.length === 1
-      ? 'Claude Code in ' + (live[0].where || 'a folder')
-      : live.length + ' Claude Code sessions'
 
   tray.setContextMenu(Menu.buildFromTemplate([
-    { label: where, enabled: false },
+    { label: spent(), enabled: false },
     { type: 'separator' },
-    {
-      label: 'Somebody there',
-      type: 'checkbox',
-      checked: !!p.on,
-      click: m => { setPref({ on: m.checked }); refreshShown(); paintTray() }
-    },
     {
       label: 'Only when Claude Code is open',
       type: 'checkbox',
       checked: p.withClaude !== false,
       click: m => { setPref({ withClaude: m.checked }); refreshShown(); paintTray() }
-    },
-    { type: 'separator' },
-    {
-      label: on ? 'Stop reacting to Claude Code' : 'React to Claude Code…',
-      click: () => { if (on) uninstall(); else askToInstall() }
     },
     {
       label: 'Start with Windows',
@@ -241,7 +243,6 @@ function paintTray () {
       click: m => { applyAutostart(m.checked); paintTray() }
     },
     { type: 'separator' },
-    { label: spent(), enabled: false },
     { label: 'Where its memory lives', click: () => shell.openPath(app.getPath('userData')) },
     { label: 'Quit Haiky', click: () => app.quit() }
   ]))

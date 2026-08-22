@@ -1724,7 +1724,7 @@
       "file_type": "code",
       "norm_label": "asktoinstall()",
       "source_file": "src/main/main.js",
-      "source_location": "L97"
+      "source_location": "L105"
     },
     {
       "id": "src_main_main_autostarton",
@@ -1760,7 +1760,7 @@
       "file_type": "code",
       "norm_label": "buildtray()",
       "source_file": "src/main/main.js",
-      "source_location": "L186"
+      "source_location": "L194"
     },
     {
       "id": "src_main_main_painttray",
@@ -1772,7 +1772,7 @@
       "file_type": "code",
       "norm_label": "painttray()",
       "source_file": "src/main/main.js",
-      "source_location": "L207"
+      "source_location": "L226"
     },
     {
       "id": "src_main_main_prefs",
@@ -1820,7 +1820,7 @@
       "file_type": "code",
       "norm_label": "spent()",
       "source_file": "src/main/main.js",
-      "source_location": "L199"
+      "source_location": "L207"
     },
     {
       "id": "src_main_main_synchooks",
@@ -1832,7 +1832,7 @@
       "file_type": "code",
       "norm_label": "synchooks()",
       "source_file": "src/main/main.js",
-      "source_location": "L165"
+      "source_location": "L173"
     },
     {
       "id": "src_main_main_trayicon",
@@ -1844,7 +1844,7 @@
       "file_type": "code",
       "norm_label": "trayicon()",
       "source_file": "src/main/main.js",
-      "source_location": "L181"
+      "source_location": "L189"
     },
     {
       "id": "src_main_main_uninstall",
@@ -1856,7 +1856,7 @@
       "file_type": "code",
       "norm_label": "uninstall()",
       "source_file": "src/main/main.js",
-      "source_location": "L146"
+      "source_location": "L154"
     },
     {
       "id": "src_main_geometry_barrect",
@@ -2702,7 +2702,7 @@
       "file_type": "code",
       "norm_label": "act",
       "source_file": "src/main/main.js",
-      "source_location": "L317"
+      "source_location": "L318"
     },
     {
       "id": "src_main_main_app_tray_menu_dialog_nativeimage_nativetheme_globalshortcut_ipcmain_shell",
@@ -5434,7 +5434,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main/main.js",
-      "source_location": "L130",
+      "source_location": "L138",
       "weight": 1.0
     },
     {
@@ -5446,7 +5446,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main/main.js",
-      "source_location": "L142",
+      "source_location": "L150",
       "weight": 1.0
     },
     {
@@ -5458,7 +5458,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main/main.js",
-      "source_location": "L143",
+      "source_location": "L151",
       "weight": 1.0
     },
     {
@@ -5470,7 +5470,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main/main.js",
-      "source_location": "L187",
+      "source_location": "L195",
       "weight": 1.0
     },
     {
@@ -5482,7 +5482,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main/main.js",
-      "source_location": "L189",
+      "source_location": "L197",
       "weight": 1.0
     },
     {
@@ -5494,67 +5494,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main/main.js",
-      "source_location": "L209",
-      "weight": 1.0
-    },
-    {
-      "source": "src_main_main_painttray",
-      "target": "src_main_main_refreshshown",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "src/main/main.js",
-      "source_location": "L224",
-      "weight": 1.0
-    },
-    {
-      "source": "src_main_main_painttray",
-      "target": "src_main_main_setpref",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "src/main/main.js",
-      "source_location": "L224",
-      "weight": 1.0
-    },
-    {
-      "source": "src_main_main_painttray",
-      "target": "src_main_main_uninstall",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "src/main/main.js",
-      "source_location": "L235",
-      "weight": 1.0
-    },
-    {
-      "source": "src_main_main_painttray",
-      "target": "src_main_main_autostarton",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "src/main/main.js",
-      "source_location": "L240",
-      "weight": 1.0
-    },
-    {
-      "source": "src_main_main_painttray",
-      "target": "src_main_main_applyautostart",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "src/main/main.js",
-      "source_location": "L241",
+      "source_location": "L228",
       "weight": 1.0
     },
     {
@@ -5566,7 +5506,55 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main/main.js",
-      "source_location": "L244",
+      "source_location": "L231",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_main_painttray",
+      "target": "src_main_main_refreshshown",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/main/main.js",
+      "source_location": "L237",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_main_painttray",
+      "target": "src_main_main_setpref",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/main/main.js",
+      "source_location": "L237",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_main_painttray",
+      "target": "src_main_main_autostarton",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/main/main.js",
+      "source_location": "L242",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_main_painttray",
+      "target": "src_main_main_applyautostart",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/main/main.js",
+      "source_location": "L243",
       "weight": 1.0
     },
     {
@@ -5602,7 +5590,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main/main.js",
-      "source_location": "L166",
+      "source_location": "L174",
       "weight": 1.0
     },
     {
@@ -5614,7 +5602,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main/main.js",
-      "source_location": "L170",
+      "source_location": "L178",
       "weight": 1.0
     },
     {
@@ -5626,7 +5614,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main/main.js",
-      "source_location": "L147",
+      "source_location": "L155",
       "weight": 1.0
     },
     {
@@ -5638,7 +5626,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/main/main.js",
-      "source_location": "L148",
+      "source_location": "L156",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_main_uninstall",
+      "target": "src_main_main_painttray",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/main/main.js",
+      "source_location": "L157",
       "weight": 1.0
     },
     {
@@ -8009,13 +8009,24 @@
     },
     {
       "source": "src_main_main",
+      "target": "src_main_main_asktoinstall",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/main.js",
+      "source_location": "L105",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_main",
       "target": "src_main_main_uninstall",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main/main.js",
-      "source_location": "L146",
+      "source_location": "L154",
       "weight": 1.0
     },
     {
@@ -8026,7 +8037,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main/main.js",
-      "source_location": "L165",
+      "source_location": "L173",
       "weight": 1.0
     },
     {
@@ -8037,7 +8048,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main/main.js",
-      "source_location": "L181",
+      "source_location": "L189",
       "weight": 1.0
     },
     {
@@ -8048,7 +8059,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main/main.js",
-      "source_location": "L186",
+      "source_location": "L194",
       "weight": 1.0
     },
     {
@@ -8059,7 +8070,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main/main.js",
-      "source_location": "L199",
+      "source_location": "L207",
       "weight": 1.0
     },
     {
@@ -8070,7 +8081,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main/main.js",
-      "source_location": "L207",
+      "source_location": "L226",
       "weight": 1.0
     },
     {
@@ -8103,7 +8114,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/main/main.js",
-      "source_location": "L317",
+      "source_location": "L318",
       "weight": 1.0
     },
     {
@@ -8258,17 +8269,6 @@
       "confidence_score": 1.0,
       "source_file": "src/main/main.js",
       "source_location": "L89",
-      "weight": 1.0
-    },
-    {
-      "source": "src_main_main",
-      "target": "src_main_main_asktoinstall",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/main/main.js",
-      "source_location": "L97",
       "weight": 1.0
     },
     {
@@ -12844,5 +12844,5 @@
       "source_file": "README.md"
     }
   ],
-  "built_at_commit": "68b6e2ee5615620d8ca939aadc23eabafe3a9257"
+  "built_at_commit": "441fc105c97db7eb7bab1787cddec95f6b1ae481"
 }
