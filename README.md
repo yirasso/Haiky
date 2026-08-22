@@ -38,7 +38,7 @@ the asar, because a binary inside an asar is a binary nothing can spawn. That
 path is exactly what `executable()` in `src/main/mascot.js` looks for when
 `app.isPackaged`.
 
-`build/make-icon.js` draws every icon from the same superellipse the engine
+`tools/make-icon.js` draws every icon from the same superellipse the engine
 uses, so there is no exported asset to drift. It emits the app icon and two
 tray icons — a pale creature for a dark taskbar and a dark one for a light
 taskbar, picked at runtime from `nativeTheme` and followed live. Windows does

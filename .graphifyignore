@@ -1,6 +1,8 @@
-# Agent harness config, not project source. Without this, .claude/settings.json
-# is indexed as code and graphify ends up describing its own hook wiring.
+# Agent harness config, not project source. Without these, .claude/settings.json
+# and .mcp.json are indexed as code and graphify ends up describing its own
+# hook wiring instead of the app's.
 .claude/
+.mcp.json
 
 # Generated icons and installers are already in .gitignore, listed again here
 # so a run with --no-gitignore still skips them.

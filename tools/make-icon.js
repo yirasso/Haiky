@@ -124,7 +124,10 @@ for (const size of [16, 32]) {
 
 /* And the app icon, which electron-builder finds by name in buildResources
    and turns into the .ico. Dark, because an installer and a Start menu are
-   light far more often than not, and because 512 is the size it wants. */
-const app = path.join(__dirname, 'icon.png')
+   light far more often than not, and because 512 is the size it wants.
+   Written into build/ rather than beside this file: build/ is the resources
+   directory electron-builder reads, and this is the thing that fills it. */
+const app = path.join(__dirname, '..', 'build', 'icon.png')
+fs.mkdirSync(path.dirname(app), { recursive: true })
 fs.writeFileSync(app, png(512, 512, draw(512, DARK, LIGHT)))
 console.log('wrote', app)

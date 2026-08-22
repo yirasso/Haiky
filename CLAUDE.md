@@ -11,7 +11,7 @@ overlay over the Windows taskbar and reacts to what Claude Code is doing.
 | `src/renderer/` | The creature itself — pose sampling, physics, drawing. Never `require`s anything. |
 | `src/main/preload.js` | The only boundary. Eleven named channels, documented in `IPC.md`. |
 | `vendor/removed-snapshot/` | **Read-only.** A verbatim copy of the app Haiky's creature came from. Nothing loads it. Do not fix its bugs, reformat it, or "clean it up" — the point is that it is unchanged. Its `.js` files under `host/` are prose with code excerpts, not runnable JavaScript; their parse errors are expected. |
-| `build/make-icon.js` | Draws the tray icons from the same superellipse the creature uses. `npm run icon`. |
+| `tools/make-icon.js` | Draws the tray icons and the app icon from the same superellipse the creature uses. `npm run icon`. It writes into `build/`, which is electron-builder's `buildResources` — the generator lives outside it so that the resources directory holds only resources. |
 
 ## Rules that are not obvious from the code
 
@@ -56,6 +56,5 @@ Rules:
 - After modifying code, run `graphify update .` to keep the graph current (AST-only, no API cost). `npm run graph` does the same. A `post-commit` hook also rebuilds it, so a normal commit keeps it fresh without being asked.
 - `graphify-out/graph.json`, `GRAPH_REPORT.md`, `wiki/`, `memory/` and `reflections/` are committed. Everything else under `graphify-out/` is regenerable and gitignored — `graphify export html|svg|graphml|obsidian|neo4j|callflow-html` and `graphify tree` rebuild those on demand.
 - `.mcp.json` exposes the same graph over MCP (`query_graph`, `shortest_path`, `god_nodes`, …) to any agent that reads it.
-- Two known gaps in the graph, so you do not trust it further than it goes:
-  - `build/make-icon.js` is not scanned — graphify skips `build/` by convention. Its nodes are in the graph because they were extracted explicitly; if that file changes, re-extract it by hand.
-  - `.css` is not a supported type, so `src/renderer/mascot.css` is invisible. The CSS custom properties the creature needs are listed in `vendor/removed-snapshot/README.md`.
+- One known gap in the graph, so you do not trust it further than it goes: `.css` is not a graphify file type, so `src/renderer/mascot.css` is invisible to it. The CSS custom properties the creature needs are listed in `vendor/removed-snapshot/README.md`.
+- Nothing under `build/` is scanned — graphify skips it by convention. That is why the icon generator lives in `tools/`; put anything else that is source rather than resource there too, or the graph will not see it.
