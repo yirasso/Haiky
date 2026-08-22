@@ -18,3 +18,4 @@ graphify-out/GRAPH_TREE.html
 graphify-out/*-callflow.html
 graphify-out/cypher.txt
 graphify-out/.graphify_learning.json
+graphify-out/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/

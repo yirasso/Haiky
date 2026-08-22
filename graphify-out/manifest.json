@@ -1,9 +1,9 @@
 {
   "package.json": {
-    "mtime": 1787420280.5598214,
-    "seen": 1787420373.9533963,
-    "ast_hash": "af3b7779e2621f4b1d412c17f3cc465c",
-    "semantic_hash": "af3b7779e2621f4b1d412c17f3cc465c"
+    "mtime": 1787425537.7766366,
+    "seen": 1787425597.0184119,
+    "ast_hash": "3259ec3de20f56a27aa6531ac01438c0",
+    "semantic_hash": ""
   },
   "src/main/bridge.js": {
     "mtime": 1787411658.8985252,
@@ -102,9 +102,9 @@
     "semantic_hash": "203abdc49978381a6606f114cbd5b659"
   },
   "README.md": {
-    "mtime": 1787424040.1885707,
-    "seen": 1787424479.9056947,
-    "ast_hash": "ca103e65cd7788ceb3776f84b46ed06c",
+    "mtime": 1787425575.150142,
+    "seen": 1787425597.0184512,
+    "ast_hash": "a3da620cf884cc568a2ecbcbe3d524e0",
     "semantic_hash": ""
   },
   "src/renderer/overlay.html": {
@@ -202,5 +202,47 @@
     "seen": 1787420836.7383156,
     "ast_hash": "ce760677f9298d04b4fb0d77a05f4331",
     "semantic_hash": "ce760677f9298d04b4fb0d77a05f4331"
+  },
+  "tools/shoot-preload.js": {
+    "mtime": 1787425454.6277652,
+    "seen": 1787425597.018438,
+    "ast_hash": "902961b6640b6624a45c757d1b6dff3b",
+    "semantic_hash": ""
+  },
+  "tools/shoot.js": {
+    "mtime": 1787425490.9955754,
+    "seen": 1787425597.0184395,
+    "ast_hash": "3dad063c80f748b6f547689bab3d1f1d",
+    "semantic_hash": ""
+  },
+  "docs/images/ask.png": {
+    "mtime": 1787425506.5328035,
+    "seen": 1787425597.0184693,
+    "ast_hash": "67f2b720b55d24c46c72887f5d102e2e",
+    "semantic_hash": ""
+  },
+  "docs/images/creature.png": {
+    "mtime": 1787425501.6374717,
+    "seen": 1787425597.0184708,
+    "ast_hash": "9318418db78e99433f0a27fb054a6e4e",
+    "semantic_hash": ""
+  },
+  "docs/images/done.png": {
+    "mtime": 1787425504.0318577,
+    "seen": 1787425597.0184715,
+    "ast_hash": "8e610bd82037af221c447868b5a2acb4",
+    "semantic_hash": ""
+  },
+  "docs/images/say.png": {
+    "mtime": 1787425513.54776,
+    "seen": 1787425597.0184727,
+    "ast_hash": "9a5de504bd8935da3e4fa4bc5abfe6c2",
+    "semantic_hash": ""
+  },
+  "docs/images/think.png": {
+    "mtime": 1787425509.3340218,
+    "seen": 1787425597.0184736,
+    "ast_hash": "376fa186ebf147f6563ce354a1efaf27",
+    "semantic_hash": ""
   }
 }
