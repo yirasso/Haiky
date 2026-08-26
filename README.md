@@ -15,24 +15,29 @@ back; say nothing and it says nothing, forever.
 
 ---
 
-## Status — finished, and not maintained
-
-**This project is no longer developed and has no support.** Nothing here is
-going to change again: there will be no fixes, no releases, and no answers to
-issues or pull requests. Treat everything below as a description of something
-that stopped, not of something in progress.
-
-It is not abandoned because it is broken. It works as written, on Windows, and
-the [Known limits](#known-limits) section is an honest account of where it ends.
-It simply stopped being worked on.
-
-**It is open to anyone who wants to take it further.** It is [MIT](LICENSE)
-licensed — fork it, rename it, finish it, ship it, no permission needed and
-nobody to ask. If you do pick it up, read [CLAUDE.md](CLAUDE.md) first for where
-everything lives and which rules are load-bearing, then [IPC.md](IPC.md) for the
-eleven channels across the preload that no static tool can see. **Known limits**
-is the natural place to start; the warm subprocess is the one that would be felt
-immediately.
+> ## ⚠️ Terminated — not maintained
+>
+> **This project has stopped. It has no releases, and nobody is supporting it.**
+> Issues and pull requests will not be answered.
+>
+> It did not stop because it was broken. It does what is described below, on
+> Windows, and it is here because the parts that work are worth more to somebody
+> than they are sitting on a disk: a creature with real physics that falls,
+> lands and can be thrown; a click-through overlay that lets a window lie across
+> your taskbar without eating a single click meant for Start; and a loopback
+> bridge that turns Claude Code's hooks into something you can watch from the
+> corner of your eye. Roughly 3,800 lines, with the reasoning behind every
+> non-obvious decision written into the comments rather than lost.
+>
+> **You are welcome to take it and carry on.** Fork it, rename it, strip it for
+> parts, or finish it. It is [MIT licensed](LICENSE) — no permission needed and
+> no credit required. [CLAUDE.md](CLAUDE.md) says where everything lives and
+> which rules are load-bearing; [IPC.md](IPC.md) documents the eleven channels
+> across the preload that no static tool can see.
+>
+> [Known limits](#known-limits) is the honest account of what works, what is
+> half-built, and what was about to change. The warm subprocess is the one that
+> would be felt immediately.
 
 ---
 
@@ -428,6 +433,8 @@ everything with a person in it.
 
 [MIT](LICENSE). Copyright © 2026 Tomas Girao.
 
-The project is finished and unmaintained, and the licence is what makes
-*somebody else should take this* an offer rather than a sentiment. Do what you
-like with it; keep the copyright line, and expect no warranty and no support.
+The project is terminated, and the licence is what makes *somebody else should
+take this* an offer rather than a sentiment. Do what you like with it. No
+credit is asked for — MIT's one formality is that the notice above travels with
+the copy, and that is the whole of what is owed. Expect no warranty and no
+support.
