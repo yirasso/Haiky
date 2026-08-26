@@ -5,8 +5,8 @@
    A hook fires inside Claude Code and posts to this server, which turns it
    into one of the five words the creature has always understood — `working`,
    `waiting`, `done`, `stopped`, or nothing at all. Those five are not invented
-   here: they are Origin's own run states, and using them again is what lets
-   the whole of the engine's reaction to them be untouched code.
+   here: they are the run states of the app the engine came from, and using
+   them again is what lets the whole of its reaction to them be untouched code.
 
    **`async: true` on every hook is not a detail.** A hook Claude Code waits
    for is a hook that makes Claude Code slower, and nothing about a mascote is

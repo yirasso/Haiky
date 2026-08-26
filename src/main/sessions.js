@@ -5,10 +5,10 @@
    Claude Code writes one small JSON file per live session into
    ~/.claude/sessions, named for the process id, and it looks like this:
 
-     { "pid": 10572, "sessionId": "0e840087-…", "cwd": "C:\\Dev\\Origin",
+     { "pid": 10572, "sessionId": "0e840087-…", "cwd": "C:\\Dev\\Haiky",
        "startedAt": 1787162478674, "version": "2.1.234",
        "kind": "interactive", "entrypoint": "claude-desktop",
-       "name": "origin-65" }
+       "name": "haiky-65" }
 
    That directory IS the answer to "is it open", and watching it is exact,
    instant and free. This is the whole of what makes the creature appear when

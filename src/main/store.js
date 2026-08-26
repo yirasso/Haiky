@@ -6,7 +6,7 @@
    whole of it is a few hundred records of a few fields each, and a database
    for that is a dependency bought with nothing.
 
-   Two rules it keeps, both learned the expensive way in Origin.
+   Two rules it keeps, both learned the expensive way in the app before this.
 
    Writes are trailing and coalesced. The renderer calls save() every time its
    model changes — every keystroke in a draft, every drag of a slider — and

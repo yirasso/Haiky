@@ -306,9 +306,9 @@ app.on('will-quit', () => {
 
 /* ── the acts ──
    The whole of what the creature is allowed to do to the machine it lives on.
-   In Origin this was a list of the host's own buttons to press, and the
-   guarantee was that the creature could do nothing the page could not already
-   do. There is no page here, so the guarantee is restated rather than
+   Where the engine came from this was a list of the host page's own buttons
+   to press, and the guarantee was that the creature could do nothing the page
+   could not already do. There is no page here, so it is restated rather than
    inherited: every act below is one narrow function taking no argument, there
    is no shell, no path and no name that reaches a filesystem, and a name that
    is not in this object does nothing at all.

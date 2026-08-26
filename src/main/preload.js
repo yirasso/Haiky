@@ -2,13 +2,14 @@
 
 /* The bridge, and one trick that is most of why porting the engine is small.
 
-   In Origin the creature learnt what the agent was doing by watching
-   `body.dataset.run` with a MutationObserver — a deliberate choice, so that it
-   had no edge into the module graph and could not be part of a cycle. There is
-   no host page here to write that attribute, so **this writes it**. The
-   observer, the flash on `done`, the worry on `stopped` and every pose that
-   hangs off them are then untouched code: the creature cannot tell that the
-   fact now arrives over IPC from a hook instead of from a composer next door.
+   In the app the engine came from, the creature learnt what the agent was
+   doing by watching `body.dataset.run` with a MutationObserver — a deliberate
+   choice, so that it had no edge into the module graph and could not be part
+   of a cycle. There is no host page here to write that attribute, so **this
+   writes it**. The observer, the flash on `done`, the worry on `stopped` and
+   every pose that hangs off them are then untouched code: the creature cannot
+   tell that the fact now arrives over IPC from a hook instead of from a
+   composer next door.
 
    Everything else the page may do is named here, and the list is the whole of
    it. The renderer gets no `require`, no `ipcRenderer`, and no way to ask for

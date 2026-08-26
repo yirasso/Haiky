@@ -2,10 +2,10 @@
 
 /* The creature, when it speaks.
 
-   Ported from vendor/removed-snapshot/main/mascot.js. Three things changed and
-   the rest is that file: the ledger points at its own document instead of
-   being folded into the creature's, `situation()` describes a taskbar rather
-   than an app window, and the act list is this app's.
+   Ported from the voice of the app the creature came from. Three things
+   changed and the rest is that file: the ledger points at its own document
+   instead of being folded into the creature's, `situation()` describes a
+   taskbar rather than an app window, and the act list is this app's.
 
    Everything about *how* it speaks lives in MASCOT.md at the repo root, and
    that file is not documentation about the prompt — it is the prompt. This
@@ -135,11 +135,11 @@ const bill = () => {
    account reports changes, the window has rolled and the week goes back to
    nothing.
 
-   Nothing calls this yet. Origin's host had a plan document to read the stamp
-   out of; Haiky spawns the binary itself and has no such document, so `week`
-   below accumulates and never rolls. Kept whole rather than deleted because
-   dropping the field means a version bump, and a version bump takes the
-   lifetime total with it. See "Known limits" in README.md. */
+   Nothing calls this yet. The host this was ported from had a plan document
+   to read the stamp out of; Haiky spawns the binary itself and has no such
+   document, so `week` below accumulates and never rolls. Kept rather than
+   deleted because dropping the field means a version bump, and a version bump
+   takes the lifetime total with it. See "Known limits" in README.md. */
 function rollWeek (resets) {
   const key = String(resets || '')
   if (!key) return
@@ -217,7 +217,7 @@ async function talk (ctx) {
   if (!doc) return { ok: false, why: 'no-character' }
 
   /* ── why this is two blocks and not one string ──
-     Measured in Origin, because the obvious move was the wrong one. A message
+     Measured, and not guessed, because the obvious move was wrong. A message
      costs about 5,700 input tokens; MASCOT.md is about 2,100 of them and the
      other 3,600 are the harness, which is a floor. So shortening the character
      file was always going to be a third of the problem at best — and when it

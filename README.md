@@ -223,7 +223,6 @@ tools/            source that is not shipped
   make-icon.js    the app icon and both tray icons
   shoot.js        the screenshots below, and the bridge they are driven through
 docs/images/      those screenshots, regenerable
-vendor/           read-only: where the creature came from
 ```
 
 ## The parts worth knowing
@@ -296,22 +295,24 @@ that is the user's whole spend history.
 
 ## Where the creature came from
 
-`vendor/removed-snapshot/` is thirteen files lifted verbatim out of Origin — the
-engine, its personality file, and the instructions for porting it. **Nothing in
-there is loaded by this app.** It is kept as it arrived, including its own
-README, which is worth reading: it names which of its decisions were arrived at
-by doing the other thing first, and those are the ones not to undo. Do not fix
-its bugs, reformat it, or clean it up; the point is that it is unchanged.
+The creature is not original to this app. Its engine was lifted whole out of an
+earlier, unrelated project and re-pointed: `src/renderer/mascot.js` **is** that
+file. The geometry, the poses, the gaze, the eyes, the blink and the sleep are
+unchanged, because they were right and because the numbers in them were arrived
+at by doing the other thing first — which is the reason to leave them alone
+rather than tune them.
 
-`src/renderer/mascot.js` is that engine, re-pointed and then given a body. The
-five changes that took it out of Origin are commented where they happen and
-numbered `CHANGE n OF 5`; the sixth replaced the gait with physics. The
-silhouette, the poses, the gaze, the eyes, the blink and the sleep are
-byte-identical to the snapshot — only where it goes has changed.
+What changed is only where it lives, and it changed in five places, each
+commented where it happens and numbered `CHANGE n OF 5`; a sixth replaced the
+drawn gait with physics. Where it came from, the creature stood inside a window
+and read the host app's own DOM for everything — the caret, the streaming
+answer, its perches, and the acts, which were that app's own buttons. There is
+no page here, so each of those was re-pointed at the desktop instead.
 
-One thing was fixed rather than carried across: the snapshot's `mascot.html`
-closes its `<svg>` twice, and its README left it that way on purpose so that the
-fix would be a decision somebody made. This is that decision.
+One thing was fixed rather than carried across: the original closed its `<svg>`
+twice. The parser dropped the orphan and it always worked, and the fault had
+been left in place deliberately so that fixing it would be a decision somebody
+made rather than one that happened to them. This is that decision.
 
 ## What was measured
 
@@ -379,9 +380,9 @@ already in the air**.
 Caching roughly halves the model path after the first reply — the character file
 sits before `SYSTEM_PROMPT_DYNAMIC_BOUNDARY` and the name and memories after it,
 so the long unchanging half is cacheable and the short changing half is not.
-(Measured in Origin: replacing the whole character file with one line dropped
-the token count to 3,617 and put the cost **up**. The file is cheap for being
-long and unchanging; what costs money is a system prompt that varies.)
+(Measured rather than assumed: replacing the whole character file with one line
+dropped the token count to 3,617 and put the cost **up**. The file is cheap for
+being long and unchanging; what costs money is a system prompt that varies.)
 
 A cent a sentence and six seconds is not good enough. The latency is a
 `claude.exe` spawned per message, and keeping one warm across messages is the
@@ -395,9 +396,9 @@ everything with a person in it.
   `claude.exe` and waits for it, which is most of the six seconds.
 - **The weekly ledger never rolls over.** `usage.week` is written on every reply
   and read by nothing. `mascot.rollWeek()` is the thing that would clear it, and
-  it has no caller — in Origin the host called it with the reset stamp the
-  account reported, and Haiky, which spawns `claude.exe` itself, has no such
-  stamp to read. The lifetime figure in the tray is the honest one; the week
+  it has no caller — the app this was ported from had a host that called it
+  with the reset stamp the account reported, and Haiky, which spawns
+  `claude.exe` itself, has no such stamp to read. The lifetime figure in the tray is the honest one; the week
   beside it in the document is not a week. Left in place rather than removed
   because clearing it means bumping the document version, and a version bump
   throws the lifetime total away with it.

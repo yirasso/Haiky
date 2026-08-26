@@ -1,8 +1,8 @@
 /* Everything the creature is painted with.
 
-   Ported from vendor/removed-snapshot/renderer/mascot.css. Every rule about
-   the creature itself is unchanged; what is new is the block of tokens at the
-   top, because in Origin those were the app's and here there is no app.
+   Ported from the app the creature came from. Every rule about the creature
+   itself is unchanged; what is new is the block of tokens at the top, because
+   there those belonged to the host app and here there is no app.
 
    The palette follows the system, and the reason is not tidiness. `--ink` is
    the body. Windows paints its taskbar dark by default, and a #0F1218
@@ -72,8 +72,8 @@ html, body {
    its 60px box, so the corners of the square sitting over your Start button
    are still your Start button.
 
-   In Origin that split was the whole of it. Here it is only the half that
-   lives inside the page: the window itself is click-through at the Win32
+   Inside a host window that split was the whole of it. Here it is only the
+   half that lives inside the page: the window itself is click-through at Win32
    level, and mascot.js tells main when the pointer crosses onto the ink so
    that the two sides say the same thing. Either half alone is a bug you can
    see — the layer eating your taskbar, or the creature you cannot grab.

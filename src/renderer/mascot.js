@@ -1,16 +1,15 @@
 /* Somebody in there.
 
-   Ported from vendor/removed-snapshot/renderer/mascot.js, which was itself
-   lifted whole out of Origin. The engine below IS that file: the geometry,
-   the poses, the gaze, the gait, the sleep and the blink are unchanged,
-   because they were right and because the snapshot's README names exactly
-   which of them were arrived at by doing the other thing first.
+   Ported whole out of an earlier app of the same author's. The engine below
+   IS that file: the geometry, the poses, the gaze, the gait, the sleep and
+   the blink are unchanged, because they were right and because the numbers in
+   them were arrived at by doing the other thing first.
 
-   What changed is only where it lives, and it changed in five places. In
-   Origin the creature stood in a window and learnt everything by reading
-   the app's own DOM: the caret out of the composer's text mirror, the
-   streaming answer out of #rows, the perches off .rail and .topbar, and the
-   acts by pressing the app's own buttons. There is no app here. It stands on
+   What changed is only where it lives, and it changed in five places. There
+   the creature stood in a window and learnt everything by reading the host
+   app's own DOM: the caret out of the composer's text mirror, the streaming
+   answer out of #rows, the perches off .rail and .topbar, and the acts by
+   pressing the app's own buttons. There is no app here. It stands on
    the Windows taskbar, it is told what Claude Code is doing by a hook, and
    its perches are fractions of the bar it is standing on. Each of the five
    is commented where it happens; nothing else was touched.
@@ -1561,7 +1560,7 @@
   })
 
   /* ── the other half of the click-through ──
-     This is the one thing this file has that Origin's never needed.
+     This is the one thing this file has that the original never needed.
 
      Inside a window, `pointer-events: none` on the layer and `auto` on the
      ink was the whole story: only the drawn shape caught the pointer, never
