@@ -15,6 +15,27 @@ back; say nothing and it says nothing, forever.
 
 ---
 
+## Status — finished, and not maintained
+
+**This project is no longer developed and has no support.** Nothing here is
+going to change again: there will be no fixes, no releases, and no answers to
+issues or pull requests. Treat everything below as a description of something
+that stopped, not of something in progress.
+
+It is not abandoned because it is broken. It works as written, on Windows, and
+the [Known limits](#known-limits) section is an honest account of where it ends.
+It simply stopped being worked on.
+
+**It is open to anyone who wants to take it further.** It is [MIT](LICENSE)
+licensed — fork it, rename it, finish it, ship it, no permission needed and
+nobody to ask. If you do pick it up, read [CLAUDE.md](CLAUDE.md) first for where
+everything lives and which rules are load-bearing, then [IPC.md](IPC.md) for the
+eleven channels across the preload that no static tool can see. **Known limits**
+is the natural place to start; the warm subprocess is the one that would be felt
+immediately.
+
+---
+
 # Part 1 — What it is
 
 ## One creature, and no window
@@ -404,7 +425,8 @@ everything with a person in it.
 
 ## License
 
-`UNLICENSED`, and `private` — see [package.json](package.json). Not published to
-npm, and not offered for redistribution.
+[MIT](LICENSE). Copyright © 2026 Tomas Girao.
 
-Copyright © 2026 Tomas Girao.
+The project is finished and unmaintained, and the licence is what makes
+*somebody else should take this* an offer rather than a sentiment. Do what you
+like with it; keep the copyright line, and expect no warranty and no support.

@@ -4,8 +4,7 @@
   "description": "A small creature that lives over the Windows taskbar and keeps company while Claude Code works.",
   "main": "src/main/main.js",
   "author": "Tomás",
-  "license": "UNLICENSED",
-  "private": true,
+  "license": "MIT",
   "scripts": {
     "start": "electron .",
     "icon": "node tools/make-icon.js",
