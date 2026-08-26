@@ -124,6 +124,9 @@ html, body {
 .mas-dot { fill: var(--ink) }
 .mas-huh-h { stroke: var(--ink); stroke-width: 2.7; fill: none }
 .mas-huh-d { fill: var(--ink) }
+/* the stroke scales with the z, so one that has drifted further is drawn
+   heavier as well as larger — which is what keeps it reading as nearer */
+.mas-z { stroke: var(--ink); stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round; fill: none }
 
 .mas[data-held] .mas-body { cursor: grabbing }
 /* the palette read rather than transcribed — the ring lives in one place */

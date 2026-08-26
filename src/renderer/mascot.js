@@ -71,6 +71,7 @@
   const halo = svg.querySelector('.mas-halo')
   const dots = svg.querySelectorAll('.mas-dot')
   const huh = svg.querySelector('.mas-huh')
+  const zees = svg.querySelectorAll('.mas-z')
   if (!gBody || !body || !eyeL || !eyeR) return
 
   /* The silhouette goes to two places and they must never disagree: the shape
@@ -293,6 +294,23 @@
   const clamp = (v, lo, hi) => v < lo ? lo : v > hi ? hi : v
   const easeOut = u => 1 - Math.pow(1 - u, 4)
 
+  /* ── the sleeping breath ──
+     A cosine in and a cosine out, but deliberately not the same one: it draws
+     in over two fifths of the cycle and lets go over the other three. Even
+     halves give you a body pulsing; uneven ones give you a body asleep, and
+     the whole of the difference is this one number.
+
+     Both halves are flat at the turn, so there is a pause at the top of the
+     breath and a longer one at the bottom without either having to be written
+     down anywhere. Runs -1 (empty) to +1 (full) over a phase of 1. */
+  const IN = 0.4
+  const lung = phase => {
+    const u = phase - Math.floor(phase)
+    return u < IN
+      ? -Math.cos((u / IN) * Math.PI)
+      : Math.cos(((u - IN) / (1 - IN)) * Math.PI)
+  }
+
   /* ── the clock the creature keeps ──
      Reduced motion is two switches and the app means both: the OS asking for
      less, and the setting in Appearance. Neither is authoritative on its own,
@@ -304,6 +322,11 @@
   const BLINK_P = 4.4                       // average seconds between blinks
   const BLINK_D = 0.15                      // and how long one takes
   const DROWSE = 30, SLEEP = 150            // heavy-lidded from here, gone by there
+  /* One sleeping breath every four and a half seconds, and eight per cent of
+     itself either side of resting. Slow enough that you catch it out of the
+     corner of your eye rather than being shown it, deep enough that you can
+     tell from across the room that it is still there. */
+  const SLOW = 0.22, DEEP = 0.08
 
   let raf = 0, t0 = 0, clock = 0, poke = 0
   let yaw = 0, pitch = 0, asleep = false, wakeStretch = 0
@@ -367,6 +390,15 @@
      face, and would change under it the day somebody swapped the font. */
   const DOT_GAP = 8.6, DOT_Y = 8
   const HUH = 3.0                                // seconds the question mark lives
+  /* Where a z is born, how far it gets, and how long the three of them take
+     between them. Well off the shoulder rather than over the crown, and that
+     is a measurement rather than a taste: the sleeping pose leans, so its
+     crown is not above the middle of anything, and the body falls away to the
+     right — which is the only place with enough clear air between the
+     silhouette and the top of the viewBox to fit three of these, at this
+     size, with this much space between them. Move them back toward the middle
+     and the lowest one is born inside its own shoulder. */
+  const Z_X = 22, Z_Y = 32, Z_RISE = 29, Z_CYCLE = 3.6, Z_LIFE = 0.79
   let huhAt = -1e3
 
   function overhead (quiet) {
@@ -381,6 +413,47 @@
       d.setAttribute('cy', (DOT_Y - lift * 3.6).toFixed(1))
       d.setAttribute('opacity', (0.22 + lift * 0.78).toFixed(2))
     }
+    /* ── z z z ──
+       One z every third of a cycle, each rising, drifting off, growing and
+       thinning out. They are staggered by dividing the one phase three ways,
+       so there is no queue and nothing to keep between frames: the clock is
+       the whole state, exactly as it is for the dots above.
+
+       The pose and not `asleep`, and the difference matters. `asleep` is only
+       the idle timer; the pose is also what you get when somebody asks the
+       creature to go to sleep, and a nap it was asked for is still a nap.
+
+       With motion off they are held part-way up rather than hidden. A still z
+       is perfectly legible; it is the travelling that was asked not to
+       happen. */
+    const sleeping = poseName === 'sleep'
+    for (let i = 0; i < zees.length; i++) {
+      const z = zees[i]
+      if (!sleeping) { z.setAttribute('opacity', '0'); continue }
+      const u = quiet ? 0.15 + i * 0.26 : (((clock / Z_CYCLE) + i / zees.length) % 1)
+      /* In over the first fifth, then squared away, so it thins out at the end
+         rather than switching off — the same shape of fade the question mark
+         leaves on, and for the same reason.
+
+         It is spent at Z_LIFE and not at the end of its travel, which is the
+         one number here that is doing a job you would not guess. The z gets
+         wider as it climbs and the top of the viewBox is a hard edge, so a z
+         that were still visible when it arrived there would be sliced off
+         square. Giving it a life shorter than its road means it is gone before
+         it can be cut, and the spacing between the three of them — which is
+         the travel divided three ways, and nothing to do with this — is left
+         alone. */
+      const v = u / Z_LIFE
+      const a = Math.min(1, u * 5) * Math.max(0, 1 - v * v)
+      const drift = Math.sin(u * Math.PI * 1.6)
+      z.setAttribute('opacity', a.toFixed(3))
+      z.setAttribute('transform',
+        'translate(' + (CX + Z_X + u * 6 + drift * 3.2).toFixed(1) + ' ' +
+                       (Z_Y - u * Z_RISE).toFixed(1) + ') ' +
+        'rotate(' + (drift * 10 - 6).toFixed(1) + ') ' +
+        'scale(' + (0.5 + u).toFixed(3) + ')')
+    }
+
     if (!huh) return
     const d = clock - huhAt
     if (d < 0 || d > HUH) { huh.setAttribute('opacity', '0'); return }
@@ -1043,7 +1116,19 @@
     wakeStretch = Math.max(0, wakeStretch - dt * 1.6)
     const rate = run === 'working' ? 2.5 : 0.85
     const depth = run === 'working' ? 0.05 : 0.022
-    const br = quiet ? 0 : Math.sin(clock * rate) * depth
+    /* Two breaths, and they are different deformations rather than the same
+       one taken slower. Awake it is area-preserving — wider as it flattens,
+       narrower as it rises — which is a body idling, and is meant to be almost
+       invisible. Asleep the whole creature fills and empties, both axes
+       together, because a sleeping breath is the one thing about it you are
+       supposed to be able to read from across the room.
+
+       Preserving area through a sleeping breath was the first attempt and it
+       was wrong: it read as the creature being kneaded rather than breathing.
+       Something asleep gets bigger when it breathes in. */
+    const sleeping = poseName === 'sleep'
+    const br = quiet || sleeping ? 0 : Math.sin(clock * rate) * depth
+    const swell = quiet || !sleeping ? 0 : lung(clock * SLOW) * DEEP
     const st = wakeStretch * (1 - wakeStretch) * 0.36
     /* ── slime ──
        Two deformations on top of everything the pose already does, and they
@@ -1075,8 +1160,12 @@
     const stretch = grounded || drag
       ? 0
       : clamp(Math.abs(vy) / 1500, 0, 0.42) * (1 - sq)
-    const sx = (1 + br * 0.7 + st * 0.5 - leap * 0.13) * (1 - stretch * 0.62 + sq * 0.55)
-    const sy = (1 - br + st + leap * 0.17) * (1 + stretch - sq * 0.48)
+    /* The swell goes on both axes with the same sign, which is what makes it
+       a breath and not a squash, and slightly less of it sideways than up:
+       everything scales about the heel, so the extra height reads as a chest
+       rising off the floor rather than as a balloon inflating in place. */
+    const sx = (1 + br * 0.7 + swell * 0.74 + st * 0.5 - leap * 0.13) * (1 - stretch * 0.62 + sq * 0.55)
+    const sy = (1 - br + swell + st + leap * 0.17) * (1 + stretch - sq * 0.48)
 
     /* It leans into a hop and comes upright on landing, pivoting near its base
        rather than its middle. A creature that rotates about its waist reads as
@@ -1157,7 +1246,10 @@
     // wink read as cheerful rather than as one eye having stopped working
     eyeR.setAttribute('d', eyePath(rex, ecy, rxE, ryOf(wink), eyeNow.bow + (1 - wink) * 0.9, eyeNow.tilt))
 
-    if (halo) halo.setAttribute('opacity', (run === 'working' ? 0.64 + br * 4 : asleep ? 0.12 : 0.32).toFixed(3))
+    // the ring carries the breath too, dimmed right down. The same fact told
+    // twice is what makes it readable on a taskbar you are not looking at.
+    if (halo) halo.setAttribute('opacity',
+      (run === 'working' ? 0.64 + br * 4 : asleep ? 0.12 + swell * 0.8 : 0.32).toFixed(3))
 
     // and last, where the whole creature is standing
     drawX = px + shakeX
