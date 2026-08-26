@@ -3,9 +3,9 @@
   "1": "src/main/mascot.js",
   "2": "overlay.js",
   "3": "src/renderer/mascot.js",
-  "4": "Creature Identity and Voice",
+  "4": "Haiky — the Origin creature packed for porting",
   "5": "Origin Renderer Creature",
-  "6": "Main Process Orchestration",
+  "6": "main.js",
   "7": "package.json",
   "8": "Electron Build Config",
   "9": "shoot.js",
@@ -15,8 +15,8 @@
   "13": "Loopback Hook Bridge Server",
   "14": "Tray Icon Generator",
   "15": "Renderer Glue and Spend Display",
-  "16": "Intent Router",
+  "16": "intents.js",
   "17": "Eye Clipping and Gaze",
-  "18": ".mas-w layer (snapshot)",
+  "18": "geometry.js",
   "19": "shoot-preload.js"
 }
