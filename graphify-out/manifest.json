@@ -96,9 +96,9 @@
     "semantic_hash": "60fe45185cae617d2882e00c17ece0bb"
   },
   "CLAUDE.md": {
-    "mtime": 1787779803.9189703,
-    "seen": 1787779891.3423412,
-    "ast_hash": "3901e351b2a39660e405827cb8911546",
+    "mtime": 1787779977.619799,
+    "seen": 1787780008.065752,
+    "ast_hash": "a49eab152dbc62dff3bc2266563b1069",
     "semantic_hash": ""
   },
   "tools/make-icon.js": {
